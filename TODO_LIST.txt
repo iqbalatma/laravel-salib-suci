@@ -1,0 +1,7 @@
+masukkan criteria pairs ke db
+check cr
+tampilkan proses
+berikan alert
+lakukan validasi
+chart
+report
