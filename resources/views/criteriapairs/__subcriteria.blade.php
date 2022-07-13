@@ -43,6 +43,7 @@
             <table class="table table-bordered table-striped" id="table-criteria-alternative">
               <thead>
                 <tr>
+                  <th rowspan="2" class="text-center align-middle">ID</th>
                   <th rowspan="2" class="text-center align-middle">Nama Alternatif</th>
                   <th colspan="{{ sizeOf($studyCase->criteria) }}" class="text-center align-middle">Kriteria</th>
                 </tr>
@@ -55,6 +56,7 @@
               <tbody>
                 @foreach ($alternative as $item)
                 <tr>
+                  <td>{{ $item->id }}</td>
                   <td>{{ $item->name }}</td>
                   @foreach ($studyCase->criteria as $itemCriteria)
                   <td id="baris-subcriteria{{ $item->id }}-kolom-subcriteria{{ $itemCriteria->id }}"></td>

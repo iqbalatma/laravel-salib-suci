@@ -16,7 +16,6 @@ class Criteria extends Model
 
     public function subcriteria()
     {
-
         return $this->hasMany(SubCriteria::class, 'criteria_id');
     }
 }

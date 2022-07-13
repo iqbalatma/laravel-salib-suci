@@ -135,21 +135,50 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <p class="text-uppercase text-sm">Tambah Kriteria</p>
-              <form method="POST" action="{{ route('criteria.store') }}">
-                @csrf
-                <input type="hidden" name="id_studyCase" value="{{ $studyCase['id'] }}">
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Nama Kriteria</label>
-                  <input type="text" class="form-control" placeholder="Masukkan nama studi kasus" name="criteria_name">
-                </div>
+          <div class="row">
+            <div class="card">
+              <div class="card-body">
+                <p class="text-uppercase text-sm">Tambah Kriteria</p>
+                <form method="POST" action="{{ route('criteria.store') }}">
+                  @csrf
+                  <input type="hidden" name="id_studyCase" value="{{ $studyCase['id'] }}">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nama Kriteria</label>
+                    <input type="text" class="form-control" placeholder="Masukkan nama studi kasus" name="criteria_name">
+                  </div>
 
-                <button type="submit" class="btn btn-primary">Tambahkan</button>
-              </form>
+                  <button type="submit" class="btn btn-primary">Tambahkan</button>
+                </form>
+              </div>
             </div>
           </div>
+          <div class="row mt-4">
+            <div class="card">
+              <div class="card-body">
+                <p class="text-uppercase text-sm">Hasil Perankingan</p>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nama</th>
+                      <th scope="col">Total</th>
+                      <th scope="col">Rank</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($rank as $item)
+                    <tr>
+                      <td>{{ $item->user->name }}</td>
+                      <td>{{ $item->total }}</td>
+                      <td>{{ $item->rank }}</td>
+                    </tr>
+                    @endforeach
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

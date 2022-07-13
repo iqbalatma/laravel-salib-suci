@@ -65,6 +65,7 @@ class CalculationController extends Controller
       "cr" =>    $this->criteriaCalculationService->cr,
       "ri" =>    $this->criteriaCalculationService->ri,
       "subCriteriaSet" => $subCriteria,
+      'allData' => $request->all()
     ];
     return response($response, Response::HTTP_OK);
   }

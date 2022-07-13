@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailGuruController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RankController;
 use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\StudyCaseController;
 use App\Http\Controllers\SubCriteriaController;
@@ -35,6 +36,7 @@ Route::controller(AuthController::class)->name('auth.')->group(function () {
     Route::post('register', 'storeRegistration')->name('storeRegistration');
 });
 
+// localhost:800/budi
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])
         ->name('dashboard');
@@ -94,6 +96,14 @@ Route::middleware('auth')->group(function () {
         ->middleware('isAdminICT')
         ->group(function () {
             Route::post('/criteriapair', 'show')->name('show');
+        });
+
+    Route::controller(RankController::class)
+        ->name('ranks.')
+        ->middleware('isAdminICT')
+        ->group(function () {
+            Route::get('/rank', 'index')->name('index');
+            Route::get('/rank-detail/{id}', 'detail')->name('detail');
         });
 });
 

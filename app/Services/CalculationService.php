@@ -172,7 +172,11 @@ class CalculationService
   public function setConsistencyRatio()
   {
     $this->ri = $this->RANDOM_INDEX[$this->rowLength];
-    $this->cr = $this->ci /  $this->ri;
+    if ($this->ri != 0) {
+      $this->cr = $this->ci /  $this->ri;
+    } else {
+      $this->cr = 0;
+    }
 
     return $this;
   }

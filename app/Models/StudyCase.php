@@ -15,4 +15,9 @@ class StudyCase extends Model
     {
         return $this->hasMany(Criteria::class);
     }
+
+    public function rank()
+    {
+        return $this->hasMany(Rank::class);
+    }
 }

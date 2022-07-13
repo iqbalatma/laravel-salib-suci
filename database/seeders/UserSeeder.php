@@ -17,44 +17,30 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            "name" => "iqbal atma muliawan",
-            "username" => "iqbalatma",
-            "email" => "iqbalatma@gmail.com",
+            "name" => "budi",
+            "username" => "budi",
+            "email" => "budi@gmail.com",
             "password" => Hash::make("admin"),
             "role_id" => 1
         ]);
         User::create([
-            "name" => "saleh budiman",
-            "username" => "salehbudiman",
-            "email" => "salehbudiman@gmail.com",
+            "name" => "saleh",
+            "username" => "saleh",
+            "email" => "saleh@gmail.com",
             "password" => Hash::make("admin"),
             "role_id" => 1
         ]);
         User::create([
-            "name" => "ovianto",
-            "username" => "ovianto",
-            "email" => "ovianto@gmail.com",
+            "name" => "yanto",
+            "username" => "yanto",
+            "email" => "yanto@gmail.com",
             "password" => Hash::make("admin"),
             "role_id" => 1
         ]);
         User::create([
-            "name" => "bagas",
-            "username" => "bagas",
-            "email" => "bagas@gmail.com",
-            "password" => Hash::make("admin"),
-            "role_id" => 1
-        ]);
-        User::create([
-            "name" => "ucup",
-            "username" => "ucup",
-            "email" => "ucup@gmail.com",
-            "password" => Hash::make("admin"),
-            "role_id" => 1
-        ]);
-        User::create([
-            "name" => "andi",
-            "username" => "andi",
-            "email" => "andi@gmail.com",
+            "name" => "eko",
+            "username" => "eko",
+            "email" => "eko@gmail.com",
             "password" => Hash::make("admin"),
             "role_id" => 1
         ]);

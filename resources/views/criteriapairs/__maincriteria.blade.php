@@ -3,6 +3,8 @@
     <div class="card">
       <div class="card-body">
         <p class="text-uppercase text-sm">{{ $studyCase['case_name'] }}</p>
+        <p class="text-uppercase text-sm d-none" id="studyCaseId">{{ $studyCase['id'] }}</p>
+
 
         <div class="row">
 

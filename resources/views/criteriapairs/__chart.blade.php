@@ -2,8 +2,8 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-body">
-        <div>
-          <canvas id="myChart" width="400" height="400"></canvas>
+        <div id="chart-container">
+
         </div>
       </div>
     </div>

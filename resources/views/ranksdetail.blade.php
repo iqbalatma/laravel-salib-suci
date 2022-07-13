@@ -23,49 +23,28 @@
     </div>
     <div class="container-fluid py-4">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="card">
             <div class="card-body">
               <p class="text-uppercase text-sm">Daftar Studi Kasus</p>
               <table class="table">
                 <thead>
                   <tr>
-                    <td scope="col">Nama Studi Kasus</td>
-                    <td scope="col">Tanggal</td>
-                    <td scope="col">Hasil</td>
-                    <td scope="col">Action</td>
+                    <td scope="col">Nama Guru</td>
+                    <td scope="col">Total</td>
+                    <td scope="col">Rank</td>
                   </tr>
                 </thead>
                 <tbody>
-
-                  @foreach ($studyCase as $item)
+                  @foreach ($ranks as $item)
                   <tr>
-                    <td>{{ $item['case_name'] }}</td>
-                    <td>{{ $item['created_at'] }}</td>
-                    <td>-</td>
-                    <td>
-                      <a href="{{ route('criteria.show', $item['id']) }}" class="btn btn-success">Detail</a>
-                    </td>
+                    <td>{{ $item->user->name }}</td>
+                    <td>{{ $item->total }}</td>
+                    <td>{{ $item->rank }} </td>
                   </tr>
                   @endforeach
                 </tbody>
               </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <p class="text-uppercase text-sm">Buat Studi Kasus</p>
-              <form method="POST" action="{{ route('studycase.store') }}">
-                @csrf
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Nama Studi Kasus</label>
-                  <input type="text" class="form-control" placeholder="Masukkan nama studi kasus" name="case_name">
-                </div>
-
-                <button type="submit" class="btn btn-primary">Tambahkan</button>
-              </form>
             </div>
           </div>
         </div>

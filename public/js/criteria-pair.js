@@ -2,19 +2,21 @@ onClickBtnRank = (criteriaPriority, subCriteriaSubPriority, subCriteriaSet) => {
     $("#btn-rank").on("click", function () {
         const matrixAlternative = [];
         const alternativeSet = [];
+        const idAlternativeSet = [];
 
         $("#table-criteria-alternative > tbody > tr").each(function () {
-            alternativeSet.push($(this).find("td").eq(0).text());
+            alternativeSet.push($(this).find("td").eq(1).text());
+            idAlternativeSet.push($(this).find("td").eq(0).text());
 
             const row = [];
             const columnLength = $(this).children().length;
-            for (let index = 1; index < columnLength; index++) {
+            for (let index = 2; index < columnLength; index++) {
                 const subCriteriaValue = $(this).find("td").eq(index).text();
                 const indexSubCriteria =
                     subCriteriaSet.indexOf(subCriteriaValue);
 
                 const value =
-                    criteriaPriority[index - 1] *
+                    criteriaPriority[index - 2] *
                     subCriteriaSubPriority[indexSubCriteria];
                 row.push(value);
             }
@@ -28,6 +30,7 @@ onClickBtnRank = (criteriaPriority, subCriteriaSubPriority, subCriteriaSet) => {
             });
 
             finalResult.push({
+                idAlternativeSet: idAlternativeSet[index],
                 alternative: alternativeSet[index],
                 sum,
             });
@@ -59,11 +62,30 @@ onClickBtnRank = (criteriaPriority, subCriteriaSubPriority, subCriteriaSet) => {
         });
 
         drawChart(finalResult);
+
+        const studyCaseId = $("#studyCaseId").text();
+
+        console.log(finalResult);
+
+        $.ajax({
+            method: "POST",
+            url: "/api/setRank",
+            data: { studyCaseId, finalResult },
+        }).done((response) => {
+            console.log(response);
+        });
     });
 };
 
 drawChart = (finalResult) => {
     $("#chart-row").removeClass("d-none");
+    $("#chart-container").empty();
+    $("#chart-container").append(
+        $("<canvas>", {
+            id: "myChart",
+        })
+    );
+
     const label = finalResult.map((item) => item.alternative);
     const sum = finalResult.map((item) => item.sum);
     const ctx = document.getElementById("myChart").getContext("2d");
@@ -224,24 +246,13 @@ $("#btn-calculate").on("click", function () {
         matrix.push(row);
     });
 
+    const studyCaseId = $("#studyCaseId").text();
     $.ajax({
         method: "POST",
         url: "/api/calculate",
-        data: { matrix },
+        data: { studyCaseId, matrix },
     }).done((response) => {
+        console.log(response);
         drawSummaryCard(response);
     });
 });
-
-[
-    {
-        alternative: "iqbal atma muliawan",
-        sum: 0.9999999999999999,
-        rank: 1,
-    },
-    {
-        alternative: "saleh budiman",
-        sum: 0.5465290829916609,
-        rank: 2,
-    },
-];

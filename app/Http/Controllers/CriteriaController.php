@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Criteria;
+use App\Models\Rank;
 use App\Models\StudyCase;
 use App\Models\SubCriteria;
 use App\Models\User;
@@ -14,11 +15,14 @@ class CriteriaController extends Controller
     {
         $studyCase = StudyCase::with('criteria.subcriteria')->where('id', $id)->first();
         $alternative = User::where('role_id', 1)->get();
+        $rank = Rank::with('user')->where('study_case_id', $id)->get();
+
 
         return response()->view('detailCriteria', [
             'title' => "Detail Criteria",
             'studyCase' => $studyCase,
-            'alternative' => $alternative
+            'alternative' => $alternative,
+            'rank' => $rank
         ]);
     }
 

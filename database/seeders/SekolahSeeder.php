@@ -20,5 +20,11 @@ class SekolahSeeder extends Seeder
     Sekolah::create([
       "nama_sekolah" => "SMA MANTAP",
     ]);
+    Sekolah::create([
+      "nama_sekolah" => "SMA JIWA",
+    ]);
+    Sekolah::create([
+      "nama_sekolah" => "SMA MANTAP JIWA",
+    ]);
   }
 }
