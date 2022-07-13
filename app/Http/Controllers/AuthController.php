@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\auth\StoreRegistration;
 use App\Models\DetailGuru;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -44,19 +45,15 @@ class AuthController extends Controller
         ]);
     }
 
-    //!validation
-    public function storeRegistration(Request $request)
+    public function storeRegistration(StoreRegistration $request)
     {
-        $dataStore = $request->input();
-        $dataStore['password'] = Hash::make($dataStore['password']);
+        $registration = $this->authService->storeRegistration($request->validated());
 
-        $user = User::create($dataStore);
-        if ($user) {
-            DetailGuru::create(['user_id' => $user->id]);
+        if ($registration) {
             return redirect()->route('auth.login');
         }
 
-        return back()->with('loginFailed', 'Register Failed');
+        return back()->with('loginFailed', 'Registration Failed');
     }
 
 

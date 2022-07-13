@@ -55,22 +55,35 @@
         <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
           <div class="card z-index-0">
             <div class="card-header text-center pt-4">
+              <x-alert></x-alert>
               <h5>Register</h5>
             </div>
             <div class="card-body">
               <form role="form" method="POST" action="{{ route('auth.storeRegistration') }}">
                 @csrf
                 <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Fullname" aria-label="Name" name="name">
+                  <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Name" aria-label="Name" name="name">
+                  @error('name')
+                  <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Username" aria-label="username" name="username">
+                  <input type="text" class="form-control  @error('username') is-invalid @enderror" placeholder="Username" aria-label="username" name="username">
+                  @error('username')
+                  <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Email" aria-label="Email" name="email">
+                  <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" aria-label="Email" name="email">
+                  @error('email')
+                  <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="mb-3">
-                  <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password">
+                  <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" aria-label="Password" name="password">
+                  @error('password')
+                  <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
