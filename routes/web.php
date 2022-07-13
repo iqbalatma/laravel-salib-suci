@@ -30,9 +30,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthController::class)->name('auth.')->group(function () {
     Route::get('login', 'login')->name('login');
-    Route::post('authenticate', 'authenticate')->name('authenticate');
     Route::get('logout', 'logout')->name('logout');
     Route::get('register', 'registration')->name('register');
+    Route::post('authenticate', 'authenticate')->name('authenticate');
     Route::post('register', 'storeRegistration')->name('storeRegistration');
 });
 
@@ -42,12 +42,6 @@ Route::middleware('auth')->group(function () {
         ->name('dashboard');
 
 
-    Route::controller(UserController::class)
-        ->name('user.')
-        ->group(function () {
-            Route::get('/data-guru', 'index')->name('dataguru')->middleware('isAdminICT');
-        });
-
     Route::controller(ProfileController::class)
         ->name('detail_guru.')
         ->middleware('isTeacher')
@@ -56,55 +50,49 @@ Route::middleware('auth')->group(function () {
             Route::put('/update', 'update')->name('update');
         });
 
-    Route::controller(StudyCaseController::class)
-        ->name('studycase.')
-        ->middleware('isAdminICT')
-        ->group(function () {
-            Route::get('/studycase', 'index')->name('show');
-            Route::post('/studycase', 'store')->name('store');
-        });
+    Route::middleware('isAdminICT')->group(function () {
+        Route::get('/data-guru', [UserController::class, 'index'])->name('user.dataguru');
 
-    Route::controller(CriteriaController::class)
-        ->name('criteria.')
-        ->middleware('isAdminICT')
-        ->group(function () {
-            Route::get('/detail/{id}', 'index')->name('show');
-            Route::post('/detail', 'store')->name('store');
-            Route::get('/detail/{id}/{idStudyCase}/delete', 'destroy')->name('destroy');
-        });
+        Route::controller(StudyCaseController::class)
+            ->name('studycase.')
+            ->group(function () {
+                Route::get('/studycase', 'index')->name('show');
+                Route::post('/studycase', 'store')->name('store');
+            });
 
-    Route::controller(SekolahController::class)
-        ->name('sekolah.')
-        ->middleware('isAdminICT')
-        ->group(function () {
-            Route::get('/sekolah', 'index')->name('show');
-            Route::get('/sekolah/{id}/edit', 'edit')->name('edit');
-            Route::post('/sekolah', 'store')->name('store');
-            Route::put('/sekolah', 'update')->name('update');
-            Route::get('/sekolah/{id}/delete', 'delete')->name('delete');
-        });
+        Route::controller(CriteriaController::class)
+            ->name('criteria.')
+            ->group(function () {
+                Route::get('/detail/{id}', 'index')->name('show');
+                Route::post('/detail', 'store')->name('store');
+                Route::get('/detail/{id}/{idStudyCase}/delete', 'destroy')->name('destroy');
+            });
 
-    Route::controller(SubCriteriaController::class)
-        ->name('subcriteria.')
-        ->middleware('isAdminICT')
-        ->group(function () {
-            Route::put('/subcriteria', 'update')->name('update');
-        });
+        Route::controller(SekolahController::class)
+            ->name('sekolah.')
+            ->group(function () {
+                Route::get('/sekolah', 'index')->name('show');
+                Route::get('/sekolah/{id}/edit', 'edit')->name('edit');
+                Route::post('/sekolah', 'store')->name('store');
+                Route::put('/sekolah', 'update')->name('update');
+                Route::get('/sekolah/{id}/delete', 'delete')->name('delete');
+            });
 
-    Route::controller(CriteriaPairController::class)
-        ->name('criteriapair.')
-        ->middleware('isAdminICT')
-        ->group(function () {
-            Route::post('/criteriapair', 'show')->name('show');
-        });
 
-    Route::controller(RankController::class)
-        ->name('ranks.')
-        ->middleware('isAdminICT')
-        ->group(function () {
-            Route::get('/rank', 'index')->name('index');
-            Route::get('/rank-detail/{id}', 'detail')->name('detail');
-        });
+        Route::put('/subcriteria', [SubCriteriaController::class, 'update'])
+            ->name('subcriteria.update');
+
+        Route::post('/criteriapair', [CriteriaPairController::class, 'show'])
+            ->name('criteriapair.show');
+
+
+        Route::controller(RankController::class)
+            ->name('ranks.')
+            ->group(function () {
+                Route::get('/rank', 'index')->name('index');
+                Route::get('/rank-detail/{id}', 'detail')->name('detail');
+            });
+    });
 });
 
 
