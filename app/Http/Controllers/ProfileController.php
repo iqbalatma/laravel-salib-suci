@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetailGuru;
-use App\Models\Sekolah;
+use App\Models\School;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class ProfileController extends Controller
         return response()->view('profile', [
             'title' => 'Profile',
             'detailGuru' => DetailGuru::where('user_id', Auth::id())->first(),
-            'dataSekolah' => Sekolah::all()
+            'schools' => School::all()
         ]);
     }
 

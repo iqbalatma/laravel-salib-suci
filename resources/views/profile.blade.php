@@ -64,13 +64,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Sekolah</label>
-                    <select name="id_sekolah" id="" class="form-control">
+                    <select name="school_id" id="" class="form-control">
                       <option value>-Silahkan Pilih Sekolah-</option>
                       @php
-                      $idSekolah = $detailGuru['id_sekolah']??'';
+                      $schoolId = $detailGuru['school_id']??'';
                       @endphp
-                      @foreach ($dataSekolah as $item)
-                      <option value="{{ $item['id'] }}" @if ($item['id']==$idSekolah) selected @endif>{{ $item['nama_sekolah'] }}</option>
+                      @foreach ($schools as $item)
+                      <option value="{{ $item['id'] }}" @if ($item['id']==$schoolId) selected @endif>{{ $item['name'] }}</option>
                       @endforeach
                     </select>
                   </div>
