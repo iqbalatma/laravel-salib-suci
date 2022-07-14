@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('tempat_lhr')->nullable();
             $table->string('tanggal_lhr')->nullable();
             $table->string('no_hp')->nullable();
-            $table->bigInteger('id_sekolah')->unsigned()->nullable();
+            $table->bigInteger('school_id')->unsigned()->nullable();
             $table->string('jenjang')->nullable();
             $table->string('golongan')->nullable();
             $table->string('sertifikasi')->nullable();

@@ -39,7 +39,7 @@
 
                   @foreach ($school as $item)
                   <tr>
-                    <td>{{ $item['nama_sekolah'] }}</td>
+                    <td>{{ $item['name'] }}</td>
                     <td>{{ $item['created_at'] }}</td>
                     <td>
                       <a href="{{ route('school.edit', $item['id']) }}" class="btn btn-success">Edit</a>
@@ -60,7 +60,7 @@
                 @csrf
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Nama Sekolah</label>
-                  <input type="text" class="form-control" placeholder="Masukkan nama sekolah" name="nama_sekolah">
+                  <input type="text" class="form-control" placeholder="Masukkan nama sekolah" name="name">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Tambahkan</button>

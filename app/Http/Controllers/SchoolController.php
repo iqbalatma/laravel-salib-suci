@@ -24,11 +24,11 @@ class SchoolController extends Controller
 
     public function edit($id)
     {
-        $sekolah = School::find($id);
+        $schools = School::find($id);
 
         return response()->view('schools.edit', [
             'title' => 'Edit Sekolah',
-            'sekolah' => $sekolah
+            'schools' => $schools
         ]);
     }
 
