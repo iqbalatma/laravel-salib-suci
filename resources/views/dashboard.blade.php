@@ -2,7 +2,7 @@
   <div class="container-fluid py-4">
     <div class="row">
       {{-- COL1 --}}
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
           <div class="card-body p-3">
             <div class="row">
@@ -22,7 +22,7 @@
         </div>
       </div>
       {{-- COL2 --}}
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
           <div class="card-body p-3">
             <div class="row">
@@ -35,14 +35,14 @@
                 </div>
               </div>
               <div class="col-4 text-end">
-                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-building" aria-hidden="true"></i>
               </div>
             </div>
           </div>
         </div>
       </div>
       {{-- COL3 --}}
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
           <div class="card-body p-3">
             <div class="row">
@@ -55,27 +55,7 @@
                 </div>
               </div>
               <div class="col-4 text-end">
-                <i class="fa fa-user-circle" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {{-- COL4 --}}
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah Guru</p>
-                  <h5 class="font-weight-bolder">
-                    $53,000
-                  </h5>
-                </div>
-              </div>
-              <div class="col-4 text-end">
-                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-list-ul" aria-hidden="true"></i>
               </div>
             </div>
           </div>

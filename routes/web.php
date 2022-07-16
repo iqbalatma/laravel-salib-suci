@@ -90,14 +90,13 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/criteriapair', [CriteriaPairController::class, 'index'])
             ->name('criteriapair.index');
-
-
-        Route::controller(RankController::class)
-            ->name('ranks.')
-            ->middleware('isChief')
-            ->group(function () {
-                Route::get('/rank', 'index')->name('index');
-                Route::get('/rank-detail/{id}', 'detail')->name('detail');
-            });
     });
 });
+
+Route::controller(RankController::class)
+    ->name('ranks.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/rank', 'index')->name('index');
+        Route::get('/rank-detail/{id}', 'detail')->name('detail');
+    });
