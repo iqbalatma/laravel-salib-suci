@@ -26,9 +26,9 @@
 
 
 
-      @include("criteriapairs.__maincriteria")
-      @include("criteriapairs.__subcriteria")
-      @include("criteriapairs.__chart")
+      @include("criteria-pairs.__maincriteria")
+      @include("criteria-pairs.__subcriteria")
+      @include("criteria-pairs.__chart")
 
 
 

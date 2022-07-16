@@ -18,10 +18,19 @@ onClickBtnRank = (criteriaPriority, subCriteriaSubPriority, subCriteriaSet) => {
                 const value =
                     criteriaPriority[index - 2] *
                     subCriteriaSubPriority[indexSubCriteria];
+                if (isNaN(value)) {
+                    return Swal.fire({
+                        title: "Error!",
+                        text: "Kolom sub kriteria tidak boleh kosong !",
+                        icon: "error",
+                    });
+                }
                 row.push(value);
             }
             matrixAlternative.push(row);
         });
+
+        console.log(matrixAlternative);
 
         const finalResult = [];
         matrixAlternative.forEach((item, index) => {
@@ -252,7 +261,6 @@ $("#btn-calculate").on("click", function () {
         url: "/api/calculate",
         data: { studyCaseId, matrix },
     }).done((response) => {
-        console.log(response);
         drawSummaryCard(response);
     });
 });

@@ -37,13 +37,13 @@
                 </thead>
                 <tbody>
 
-                  @foreach ($sekolah as $item)
+                  @foreach ($school as $item)
                   <tr>
-                    <td>{{ $item['nama_sekolah'] }}</td>
+                    <td>{{ $item['name'] }}</td>
                     <td>{{ $item['created_at'] }}</td>
                     <td>
-                      <a href="{{ route('sekolah.edit', $item['id']) }}" type="button" class="btn btn-success">Edit</a>
-                      <a href="{{ route('sekolah.delete', $item['id']) }}" type="button" class="btn btn-danger">Delete</a>
+                      <a href="{{ route('school.edit', $item['id']) }}" class="btn btn-success">Edit</a>
+                      <a href="{{ route('school.delete', $item['id']) }}" class="btn btn-danger">Delete</a>
                     </td>
                   </tr>
                   @endforeach
@@ -56,11 +56,11 @@
           <div class="card">
             <div class="card-body">
               <p class="text-uppercase text-sm">Tambah Nama Sekolah Kasus</p>
-              <form method="POST" action="{{ route('sekolah.store') }}">
+              <form method="POST" action="{{ route('school.store') }}">
                 @csrf
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Nama Sekolah</label>
-                  <input type="text" class="form-control" placeholder="Masukkan nama sekolah" name="nama_sekolah">
+                  <input type="text" class="form-control" placeholder="Masukkan nama sekolah" name="name">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Tambahkan</button>

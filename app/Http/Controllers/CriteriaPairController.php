@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class CriteriaPairController extends Controller
 {
-    public function show(Request $request)
+    public function index(Request $request)
     {
-
+        if ($request->input('idAlternative') == null || count($request->input('idAlternative')) < 2) {
+            return redirect()->back()->with('error', 'Minimal pilih 2 alternaitf !');
+        };
         $studyCase = StudyCase::with('criteria.subcriteria')
             ->where('id', $request->input('studyCaseId'))
             ->first();
@@ -18,7 +20,11 @@ class CriteriaPairController extends Controller
             ->whereIn('id', $request->input('idAlternative'))
             ->get();
 
-        return response()->view('criteriapairs.criteriapair', [
+        if (count($studyCase->criteria) < 3) {
+            return redirect()->back()->with('error', 'Minimal gunakan 3 kriteria !');
+        }
+
+        return response()->view('criteria-pairs.index', [
             'title' => 'Criteria Pair',
             "studyCase" => $studyCase,
             "alternative" => $alternative

@@ -43,8 +43,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function detail_guru()
+    public function teacherDetail()
     {
-        return $this->hasOne(DetailGuru::class);
+        return $this->hasOne(TeacherDetail::class);
+    }
+
+    public function role()
+    {
+        return $this->hasOne(Role::class);
     }
 }

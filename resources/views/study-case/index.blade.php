@@ -24,6 +24,7 @@
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-md-8">
+          <x-alert></x-alert>
           <div class="card">
             <div class="card-body">
               <p class="text-uppercase text-sm">Daftar Studi Kasus</p>
@@ -32,7 +33,6 @@
                   <tr>
                     <td scope="col">Nama Studi Kasus</td>
                     <td scope="col">Tanggal</td>
-                    <td scope="col">Hasil</td>
                     <td scope="col">Action</td>
                   </tr>
                 </thead>
@@ -42,9 +42,22 @@
                   <tr>
                     <td>{{ $item['case_name'] }}</td>
                     <td>{{ $item['created_at'] }}</td>
-                    <td>-</td>
                     <td>
-                      <a href="{{ route('criteria.show', $item['id']) }}" class="btn btn-success">Detail</a>
+                      <div class="row">
+                        <div class="col-4">
+                          <a href="{{ route('criteria.show', $item['id']) }}" class="btn btn-success">Detail</a>
+                        </div>
+                        @if (!count($item->criteria))
+                        <div class="col-4">
+                          <form action="{{ route('studycase.destroy') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="id" value="{{ $item->id }}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+                        </div>
+                        @endif
+                      </div>
                     </td>
                   </tr>
                   @endforeach
@@ -61,7 +74,7 @@
                 @csrf
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Nama Studi Kasus</label>
-                  <input type="text" class="form-control" placeholder="Masukkan nama studi kasus" name="case_name">
+                  <input type="text" class="form-control" placeholder="Masukkan nama studi kasus" name="case_name" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Tambahkan</button>

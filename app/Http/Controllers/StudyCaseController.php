@@ -9,8 +9,8 @@ class StudyCaseController extends Controller
 {
   public function index()
   {
-    $studyCase = StudyCase::all();
-    return response()->view('studycase', [
+    $studyCase = StudyCase::with('criteria')->get();
+    return response()->view('study-case.index', [
       'title' => 'Study Case',
       'studyCase' => $studyCase
     ]);
@@ -20,8 +20,15 @@ class StudyCaseController extends Controller
   {
     $caseName = $request->input('case_name');
 
-    StudyCase::create(['case_name' => $caseName]);
+    $studyCase = StudyCase::create(['case_name' => $caseName]);
 
-    return redirect()->route('studycase.show');
+    return redirect()->route('studycase.show')->with('success', "Tambah study case $studyCase->case_name berhasil !");
+  }
+
+  public function destroy(Request $request)
+  {
+    $id = $request->input('id');
+    StudyCase::destroy($id);
+    return redirect()->route('studycase.show')->with('success', "Hapus study case berhasil !");
   }
 }

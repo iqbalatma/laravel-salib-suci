@@ -36,7 +36,6 @@
                   </tr>
                 </thead>
                 <tbody>
-
                   @foreach ($studyCase as $item)
                   <tr>
                     <td>{{ $item['case_name'] }}</td>

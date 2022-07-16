@@ -27,13 +27,13 @@
           <div class="card">
             <div class="card-body">
               <p class="text-uppercase text-sm">Tambah Nama Sekolah Kasus</p>
-              <form method="POST" action="{{ route('sekolah.update') }}">
+              <form method="POST" action="{{ route('school.update') }}">
                 @csrf
                 @method('PUT')
-                <input type="hidden" name="id" value="{{ $sekolah['id'] }}">
+                <input type="hidden" name="id" value="{{ $schools['id'] }}">
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Nama Sekolah</label>
-                  <input type="text" class="form-control" placeholder="Masukkan nama sekolah" name="nama_sekolah" value="{{ $sekolah['nama_sekolah'] }}">
+                  <input type="text" class="form-control" placeholder="Masukkan nama sekolah" name="name" value="{{ $schools['name'] }}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>

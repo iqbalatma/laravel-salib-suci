@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('detail_guru', function (Blueprint $table) {
-            $table->foreign('id_sekolah')->references('id')->on('sekolah');
+        Schema::table('teacher_details', function (Blueprint $table) {
+            $table->foreign('school_id')->references('id')->on('schools');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('detail_guru', function (Blueprint $table) {
-            $table->dropForeign(['id_sekolah']);
+        Schema::table('teacher_details', function (Blueprint $table) {
+            $table->dropForeign(['school_id']);
         });
     }
 };

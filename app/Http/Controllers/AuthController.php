@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\LoginRequest;
-use App\Models\DetailGuru;
-use App\Models\User;
+use App\Http\Requests\auth\StoreRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Services\AuthService;
@@ -31,7 +30,13 @@ class AuthController extends Controller
         $authenticated = $this->authService->authenticate($request);
 
         if ($authenticated) {
-            return redirect()->route('dashboard');
+            if (Auth::user()->role_id == 3) {
+                return redirect()->route('dashboard');
+            } else if (Auth::user()->role_id == 2) {
+                return redirect()->route('user.teachers');
+            } else {
+                return redirect()->route('teacherDetail.profile');
+            }
         }
 
         return back()->with('loginFailed', 'Login failed ! Username or password incorrect !');
@@ -44,19 +49,15 @@ class AuthController extends Controller
         ]);
     }
 
-    //!validation
-    public function storeRegistration(Request $request)
+    public function storeRegistration(StoreRegistration $request)
     {
-        $dataStore = $request->input();
-        $dataStore['password'] = Hash::make($dataStore['password']);
+        $registration = $this->authService->storeRegistration($request->validated());
 
-        $user = User::create($dataStore);
-        if ($user) {
-            DetailGuru::create(['user_id' => $user->id]);
+        if ($registration) {
             return redirect()->route('auth.login');
         }
 
-        return back()->with('loginFailed', 'Register Failed');
+        return back()->with('loginFailed', 'Registration Failed');
     }
 
 
