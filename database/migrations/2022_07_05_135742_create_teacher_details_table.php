@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('detail_guru', function (Blueprint $table) {
+        Schema::create('teacher_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('nik_guru')->unique()->nullable();
+            $table->integer('nik')->unique()->nullable();
             $table->string('alamat')->nullable();
             $table->string('jenis_kel')->nullable();
             $table->string('tempat_lhr')->nullable();
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_guru');
+        Schema::dropIfExists('teacher_details');
     }
 };

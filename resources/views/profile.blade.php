@@ -27,7 +27,7 @@
           <div class="card">
             <div class="card-body">
               <p class="text-uppercase text-sm">User Information</p>
-              <form action="{{ route('detail_guru.update') }}" method="POST" class="row">
+              <form action="{{ route('teacherDetail.update') }}" method="POST" class="row">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="id" value="{{ Auth::id() }}">
@@ -40,7 +40,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">NIK</label>
-                    <input class="form-control" type="text" value="{{ $detailGuru['nik_guru']??'' }}" name="nik_guru">
+                    <input class="form-control" type="text" value="{{ $teacherDetails['nik']??'' }}" name="nik">
                   </div>
                 </div>
                 <div class="col-md-3">
@@ -52,7 +52,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Nomor HP</label>
-                    <input class="form-control" type="text" value="{{ $detailGuru['no_hp']??'' }}" name="no_hp">
+                    <input class="form-control" type="text" value="{{ $teacherDetails['no_hp']??'' }}" name="no_hp">
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -67,7 +67,7 @@
                     <select name="school_id" id="" class="form-control">
                       <option value>-Silahkan Pilih Sekolah-</option>
                       @php
-                      $schoolId = $detailGuru['school_id']??'';
+                      $schoolId = $teacherDetails['school_id']??'';
                       @endphp
                       @foreach ($schools as $item)
                       <option value="{{ $item['id'] }}" @if ($item['id']==$schoolId) selected @endif>{{ $item['name'] }}</option>
@@ -80,7 +80,7 @@
                     <label for="example-text-input" class="form-control-label">Jenis Kelamin</label>
                     <select name="jenis_kel" id="" class="form-control">
                       @php
-                      $jenisKelamin = $detailGuru['jenis_kel']??"";
+                      $jenisKelamin = $teacherDetails['jenis_kel']??"";
                       @endphp
                       <option value="null">-Silahkan Pilih-</option>
                       <option value="1" @if ($jenisKelamin==1) selected @endif>Laki-laki</option>
@@ -91,37 +91,37 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Tempat Lahir</label>
-                    <input class="form-control" type="text" value="{{ $detailGuru['tempat_lhr']??'' }}" name="tempat_lhr">
+                    <input class="form-control" type="text" value="{{ $teacherDetails['tempat_lhr']??'' }}" name="tempat_lhr">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Tanggal Lahir</label>
-                    <input class="form-control" type="text" value="{{ $detailGuru['tanggal_lhr']??'' }}" name="tanggal_lhr">
+                    <input class="form-control" type="text" value="{{ $teacherDetails['tanggal_lhr']??'' }}" name="tanggal_lhr">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Jenjang</label>
-                    <input class="form-control" type="text" value="{{ $detailGuru['jenjang']??'' }}" name="jenjang">
+                    <input class="form-control" type="text" value="{{ $teacherDetails['jenjang']??'' }}" name="jenjang">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Golongan</label>
-                    <input class="form-control" type="text" value="{{ $detailGuru['golongan']??'' }}" name="golongan">
+                    <input class="form-control" type="text" value="{{ $teacherDetails['golongan']??'' }}" name="golongan">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Sertifikasi</label>
-                    <input class="form-control" type="text" value="{{ $detailGuru['sertifikasi']??'' }}" name="sertifikasi">
+                    <input class="form-control" type="text" value="{{ $teacherDetails['sertifikasi']??'' }}" name="sertifikasi">
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Alamat</label>
-                    <textarea class="form-control" name="alamat">{{ $detailGuru['alamat']??'' }}</textarea>
+                    <textarea class="form-control" name="alamat">{{ $teacherDetails['alamat']??'' }}</textarea>
                   </div>
                 </div>
                 <div class="col-md-4">

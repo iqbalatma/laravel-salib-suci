@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\auth\StoreRegistration;
-use App\Models\DetailGuru;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Services\AuthService;
@@ -32,7 +30,13 @@ class AuthController extends Controller
         $authenticated = $this->authService->authenticate($request);
 
         if ($authenticated) {
-            return redirect()->route('dashboard');
+            if (Auth::user()->role_id == 3) {
+                return redirect()->route('dashboard');
+            } else if (Auth::user()->role_id == 2) {
+                return redirect()->route('user.teachers');
+            } else {
+                return redirect()->route('teacherDetail.profile');
+            }
         }
 
         return back()->with('loginFailed', 'Login failed ! Username or password incorrect !');

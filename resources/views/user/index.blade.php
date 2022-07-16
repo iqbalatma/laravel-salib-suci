@@ -4,7 +4,7 @@
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>Authors table</h6>
+            <h6>Data Guru</h6>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
@@ -25,7 +25,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($dataGuru as $item )
+                  @foreach ($teacherDetails as $item )
                   <tr>
                     <td>
                       <div class="d-flex px-2 py-1">
@@ -37,7 +37,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $alamat = $item->detail_guru->alamat??'' }}
+                        {{ $alamat = $item->teacherDetails->alamat??'' }}
                         @if ($alamat == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -45,7 +45,7 @@
                     </td>
                     <td class="align-middle text-center">
                       @php
-                      $jenis_kel = $item->detail_guru->jenis_kel??'';
+                      $jenis_kel = $item->teacherDetails->jenis_kel??'';
                       if ($jenis_kel==1) {
                       echo '<span class="badge badge-sm bg-gradient-success">
                         Laki-laki
@@ -65,7 +65,7 @@
                     <td class="align-middle text-center">
 
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $tempat_lhr = $item->detail_guru->tempat_lhr??'' }}
+                        {{ $tempat_lhr = $item->teacherDetails->tempat_lhr??'' }}
                         @if ($tempat_lhr == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -73,7 +73,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $tanggal_lhr = $item->detail_guru->tanggal_lhr??'' }}
+                        {{ $tanggal_lhr = $item->teacherDetails->tanggal_lhr??'' }}
                         @if ($tanggal_lhr == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -81,7 +81,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $no_hp = $item->detail_guru->no_hp??'' }}
+                        {{ $no_hp = $item->teacherDetails->no_hp??'' }}
                         @if ($no_hp == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -89,7 +89,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $id_sekolah = $item->detail_guru->id_sekolah??'' }}
+                        {{ $id_sekolah = $item->teacherDetails->id_sekolah??'' }}
                         @if ($id_sekolah == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -97,7 +97,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $jenjang = $item->detail_guru->jenjang??'' }}
+                        {{ $jenjang = $item->teacherDetails->jenjang??'' }}
                         @if ($jenjang == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -105,7 +105,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $golongan = $item->detail_guru->golongan??'' }}
+                        {{ $golongan = $item->teacherDetails->golongan??'' }}
                         @if ($golongan == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -113,7 +113,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $sertifikasi =$item->detail_guru->sertifikasi??'' }}
+                        {{ $sertifikasi =$item->teacherDetails->sertifikasi??'' }}
                         @if ($sertifikasi == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\DetailGuru;
+use App\Models\TeacherDetail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +30,7 @@ class AuthService
 
     $user = User::create($dataUser);
     if ($user) {
-      DetailGuru::create(['user_id' => $user->id]);
+      TeacherDetail::create(['user_id' => $user->id]);
       return true;
     }
 

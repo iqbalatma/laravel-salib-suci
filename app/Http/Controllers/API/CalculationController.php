@@ -20,13 +20,13 @@ class CalculationController extends Controller
   public function calculate(Request $request)
   {
     $matrix = $request->input('matrix');
-    // $matrix = [
-    //   [1, 4, 3, 5, 7],
-    //   [0.25, 1, 3, 2, 7],
-    //   [0.333333, 0.333333, 1, 2, 5],
-    //   [0.2, 0.5, 0.5, 1, 3],
-    //   [0.142857143, 0.142857143, 0.2, 0.333333, 1],
-    // ];
+    $matrix = [
+      [1, 4, 3, 5, 7],
+      [0.25, 1, 3, 2, 7],
+      [0.333333, 0.333333, 1, 2, 5],
+      [0.2, 0.5, 0.5, 1, 3],
+      [0.142857143, 0.142857143, 0.2, 0.333333, 1],
+    ];
     $this->criteriaCalculationService->setMatrixCriteria($matrix)
       ->setSumColumnCriteria()
       ->setNewMatrixCriteria()

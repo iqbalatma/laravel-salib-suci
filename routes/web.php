@@ -1,10 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CalculateController;
 use App\Http\Controllers\CriteriaPairController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DetailGuruController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankController;
@@ -26,7 +24,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
+Route::get('tes', function () {
+    $i = 0;
+    while ($i < 6) {
+        if ($i++ == 3) break;
+    }
+    echo "lop";
+});
 
 Route::controller(AuthController::class)->name('auth.')->group(function () {
     Route::get('login', 'login')->name('login');
@@ -39,11 +43,11 @@ Route::controller(AuthController::class)->name('auth.')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])
-        ->name('dashboard');
+        ->name('dashboard')->middleware('isChief');
 
 
     Route::controller(ProfileController::class)
-        ->name('detail_guru.')
+        ->name('teacherDetail.')
         ->middleware('isTeacher')
         ->group(function () {
             Route::get('/profile', 'profile')->name('profile');
@@ -51,13 +55,14 @@ Route::middleware('auth')->group(function () {
         });
 
     Route::middleware('isAdminICT')->group(function () {
-        Route::get('/data-guru', [UserController::class, 'index'])->name('user.dataguru');
+        Route::get('/teachers', [UserController::class, 'index'])->name('user.teachers');
 
         Route::controller(StudyCaseController::class)
             ->name('studycase.')
             ->group(function () {
                 Route::get('/studycase', 'index')->name('show');
                 Route::post('/studycase', 'store')->name('store');
+                Route::delete('/studycase', 'destroy')->name('destroy');
             });
 
         Route::controller(CriteriaController::class)
@@ -79,15 +84,17 @@ Route::middleware('auth')->group(function () {
             });
 
 
+
         Route::put('/subcriteria', [SubCriteriaController::class, 'update'])
             ->name('subcriteria.update');
 
-        Route::post('/criteriapair', [CriteriaPairController::class, 'show'])
-            ->name('criteriapair.show');
+        Route::post('/criteriapair', [CriteriaPairController::class, 'index'])
+            ->name('criteriapair.index');
 
 
         Route::controller(RankController::class)
             ->name('ranks.')
+            ->middleware('isChief')
             ->group(function () {
                 Route::get('/rank', 'index')->name('index');
                 Route::get('/rank-detail/{id}', 'detail')->name('detail');

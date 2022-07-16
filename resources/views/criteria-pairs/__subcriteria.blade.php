@@ -38,34 +38,37 @@
             <button class="btn btn-primary" id="btn-setting-kriteria-value">Setting</button>
           </div>
         </div>
+
         <div class="row mt-4">
           <div class="col">
-            <table class="table table-bordered table-striped" id="table-criteria-alternative">
-              <thead>
-                <tr>
-                  <th rowspan="2" class="text-center align-middle">ID</th>
-                  <th rowspan="2" class="text-center align-middle">Nama Alternatif</th>
-                  <th colspan="{{ sizeOf($studyCase->criteria) }}" class="text-center align-middle">Kriteria</th>
-                </tr>
-                <tr>
-                  @foreach ($studyCase->criteria as $item)
-                  <th>{{ $item->criteria_name }}</th>
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped" id="table-criteria-alternative">
+                <thead>
+                  <tr>
+                    <th rowspan="2" class="text-center align-middle">ID</th>
+                    <th rowspan="2" class="text-center align-middle">Nama Alternatif</th>
+                    <th colspan="{{ sizeOf($studyCase->criteria) }}" class="text-center align-middle">Kriteria</th>
+                  </tr>
+                  <tr>
+                    @foreach ($studyCase->criteria as $item)
+                    <th>{{ $item->criteria_name }}</th>
+                    @endforeach
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($alternative as $item)
+                  <tr>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->name }}</td>
+                    @foreach ($studyCase->criteria as $itemCriteria)
+                    <td id="baris-subcriteria{{ $item->id }}-kolom-subcriteria{{ $itemCriteria->id }}"></td>
+                    @endforeach
+                  </tr>
                   @endforeach
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($alternative as $item)
-                <tr>
-                  <td>{{ $item->id }}</td>
-                  <td>{{ $item->name }}</td>
-                  @foreach ($studyCase->criteria as $itemCriteria)
-                  <td id="baris-subcriteria{{ $item->id }}-kolom-subcriteria{{ $itemCriteria->id }}"></td>
-                  @endforeach
-                </tr>
-                @endforeach
-              </tbody>
+                </tbody>
 
-            </table>
+              </table>
+            </div>
           </div>
         </div>
         <div class="row">
@@ -83,24 +86,27 @@
         <p class="text-uppercase text-sm">Perankingan</p>
         <div class="row mt-4">
           <div class="col">
-            <table class="table table-bordered table-striped" id="table-rank">
-              <thead>
-                <tr>
-                  <th>Nama Alternatif</th>
-                  <th>Jumlah Bobot</th>
-                  <th>Ranking</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($alternative as $item)
-                <tr>
-                  <td>{{ $item->name }}</td>
-                  <td>-</td>
-                  <td>-</td>
-                </tr>
-                @endforeach
-              </tbody>
-            </table>
+
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped" id="table-rank">
+                <thead>
+                  <tr>
+                    <th>Nama Alternatif</th>
+                    <th>Jumlah Bobot</th>
+                    <th>Ranking</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($alternative as $item)
+                  <tr>
+                    <td>{{ $item->name }}</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
