@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('teacher_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('nik')->unique()->nullable();
+            $table->string('nik')->unique()->nullable();
             $table->string('alamat')->nullable();
             $table->string('jenis_kel')->nullable();
             $table->string('tempat_lhr')->nullable();

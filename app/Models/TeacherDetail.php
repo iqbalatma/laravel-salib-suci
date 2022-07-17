@@ -11,6 +11,9 @@ class TeacherDetail extends Model
     protected $table = 'teacher_details';
     protected $guarded = [];
 
+    protected $fillable = ['nik', 'alamat', 'jenis_kel', 'tanggal_lhr', 'no_hp', 'school_id', 'jenjang', 'golongan', 'sertifikasi', 'gambar_profile', 'user_id'];
+
+
     public function user()
     {
         return $this->belongsTo(User::class);

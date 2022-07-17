@@ -31,6 +31,6 @@ class ProfileController extends Controller
         TeacherDetail::where('user_id', $request->input('id'))->update($request->except('_token', '_method', 'username', 'name', 'email'));
 
 
-        return redirect()->route('teacherDetail.profile');
+        return redirect()->route('teacherDetail.profile')->with('success', 'Update informasi guru berhasil !');
     }
 }

@@ -11,6 +11,7 @@
               <table class="table align-items-center mb-0 ms-3">
                 <thead>
                   <tr>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Alamat</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Kelamin</th>
@@ -37,15 +38,24 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $alamat = $item->teacherDetails->alamat??'' }}
+                        {{ $alamat = $item->teacherDetail->nik??'' }}
                         @if ($alamat == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
                       </span>
                     </td>
                     <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">
+                        {{ $alamat = $item->teacherDetail->alamat??'' }}
+                        @if ($alamat == '')
+                        <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
+                        @endif
+                        {{ $alamat }}
+                      </span>
+                    </td>
+                    <td class="align-middle text-center">
                       @php
-                      $jenis_kel = $item->teacherDetails->jenis_kel??'';
+                      $jenis_kel = $item->teacherDetail->jenis_kel??'';
                       if ($jenis_kel==1) {
                       echo '<span class="badge badge-sm bg-gradient-success">
                         Laki-laki
@@ -65,7 +75,7 @@
                     <td class="align-middle text-center">
 
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $tempat_lhr = $item->teacherDetails->tempat_lhr??'' }}
+                        {{ $tempat_lhr = $item->teacherDetail->tempat_lhr??'' }}
                         @if ($tempat_lhr == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -73,7 +83,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $tanggal_lhr = $item->teacherDetails->tanggal_lhr??'' }}
+                        {{ $tanggal_lhr = $item->teacherDetail->tanggal_lhr??'' }}
                         @if ($tanggal_lhr == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -81,7 +91,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $no_hp = $item->teacherDetails->no_hp??'' }}
+                        {{ $no_hp = $item->teacherDetail->no_hp??'' }}
                         @if ($no_hp == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -89,7 +99,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $id_sekolah = $item->teacherDetails->id_sekolah??'' }}
+                        {{ $id_sekolah = $item->teacherDetail->school->name??'' }}
                         @if ($id_sekolah == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -97,7 +107,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $jenjang = $item->teacherDetails->jenjang??'' }}
+                        {{ $jenjang = $item->teacherDetail->jenjang??'' }}
                         @if ($jenjang == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -105,7 +115,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $golongan = $item->teacherDetails->golongan??'' }}
+                        {{ $golongan = $item->teacherDetail->golongan??'' }}
                         @if ($golongan == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif
@@ -113,7 +123,7 @@
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        {{ $sertifikasi =$item->teacherDetails->sertifikasi??'' }}
+                        {{ $sertifikasi =$item->teacherDetail->sertifikasi??'' }}
                         @if ($sertifikasi == '')
                         <i class="fa fa-exclamation-triangle text-danger text-sm opacity-10" aria-hidden="true"></i>
                         @endif

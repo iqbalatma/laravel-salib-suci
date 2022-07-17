@@ -9,9 +9,12 @@ class UserController extends Controller
 
     public function index()
     {
+
+        $teacherDetails = User::with('teacherDetail.school')->where('role_id', 1)->get();
+        // dd($teacherDetails);
         return response()->view('user.index', [
             'title' => 'Data Guru',
-            'teacherDetails' => User::with('teacherDetail')->where('role_id', 1)->get()
+            'teacherDetails' => $teacherDetails
         ]);
     }
 }

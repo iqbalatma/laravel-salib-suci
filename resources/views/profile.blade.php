@@ -24,6 +24,7 @@
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-md-12">
+          <x-alert></x-alert>
           <div class="card">
             <div class="card-body">
               <p class="text-uppercase text-sm">User Information</p>
