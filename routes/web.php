@@ -24,13 +24,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('tes', function () {
-    $i = 0;
-    while ($i < 6) {
-        if ($i++ == 3) break;
-    }
-    echo "lop";
-});
 
 Route::controller(AuthController::class)->name('auth.')->group(function () {
     Route::get('login', 'login')->name('login');
