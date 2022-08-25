@@ -2,7 +2,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-body">
-        <p class="text-uppercase text-sm">Nama Stduy Case : {{ $studyCase['case_name'] }}</p>
+        <p class="text-uppercase text-sm">Nama Study Case : {{ $studyCase['case_name'] }}</p>
         <p class="text-uppercase text-sm d-none" id="studyCaseId">{{ $studyCase['id'] }}</p>
 
 
@@ -94,6 +94,51 @@
         <div class="row">
           <div class="col-12">
             <div class="table-responsive">
+              <table class="table ">
+                <thead>
+                  <tr>
+                    <th>Intensitas Kepentingan</th>
+                    <th>Definisi</th>
+                  </tr>
+                  <tr>
+                    <td class="text-center">1</td>
+                    <td>Sama pentingnya dibanding dengan yang lain</td>
+                  </tr>
+                  <tr>
+                    <td class="text-center">3</td>
+                    <td>Sedikit lebih penting dibanding yang lain</td>
+                  </tr>
+                  <tr>
+                    <td class="text-center">5</td>
+                    <td>Cukup penting dibanding yang lain</td>
+                  </tr>
+                  <tr>
+                    <td class="text-center">7</td>
+                    <td>Sangat Penting dibanding dengan yang lain</td>
+                  </tr>
+                  <tr>
+                    <td class="text-center">9</td>
+                    <td>Ekstrim pentingnya dibanding dengan yang lain</td>
+                  </tr>
+                  <tr>
+                    <td class="text-center">2,4,6,8</td>
+                    <td>Nilai diantara dua penilaian yang berdekatan</td>
+                  </tr>
+                  <tr>
+                    <td class="text-center">Resiprokal</td>
+                    <td>Jika elemen i memiliki salah satu angka di atas <br>
+                      dibandingkan elemen j, maka j memiliki nilai <br>
+                      kebalikannya ketika dibandingkan dengan i</td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class=" row">
+          <div class="col-12">
+            <div class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
@@ -113,8 +158,6 @@
             </div>
           </div>
         </div>
-
-
         <hr>
         Status
         <div class="alert alert-secondary text-white" role="alert" id="summary-alert">
