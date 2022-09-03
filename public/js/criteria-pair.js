@@ -49,8 +49,8 @@ onClickBtnRank = (criteriaPriority, subCriteriaSubPriority, subCriteriaSet) => {
             return b.sum - a.sum;
         });
 
-        var rank = 1;
-        for (var i = 0; i < finalResult.length; i++) {
+        let rank = 1;
+        for (let i = 0; i < finalResult.length; i++) {
             if (i > 0 && finalResult[i].sum < finalResult[i - 1].sum) {
                 rank++;
             }
@@ -73,6 +73,12 @@ onClickBtnRank = (criteriaPriority, subCriteriaSubPriority, subCriteriaSet) => {
         drawChart(finalResult);
 
         const studyCaseId = $("#studyCaseId").text();
+
+        $("#summary-text").removeClass('d-none')
+        $("#highest-alternative").text(finalResult[0].alternative.charAt(0).toUpperCase()+finalResult[0].alternative.slice(1))
+        $("#highest-value").text(finalResult[0].sum.toFixed(3))
+        $("#lowest-alternative").text(finalResult[finalResult.length -1].alternative.charAt(0).toUpperCase()+finalResult[finalResult.length -1].alternative.slice(1))
+        $("#lowest-value").text(finalResult[finalResult.length -1].sum.toFixed(3))
 
         console.log(finalResult);
 

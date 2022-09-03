@@ -106,6 +106,12 @@
                   @endforeach
                 </tbody>
               </table>
+              <p id="summary-text" class="d-none">
+                Berdasarkan hasil perhitungan dan perankingan studi kasus <b>{{ $studyCase['case_name'] }}</b>, maka dapat disimpulkan bahwa <b id="highest-alternative">
+                  {alternative}
+                </b> memiliki nilai tertinggi dengan total
+                <b id="highest-value">{total_tertinggi}</b> dan <b id="lowest-alternative">{alternative_terendah}</b> memiliki nilai terendah dengan total <b id="lowest-value">{total terendah}</b>
+              </p>
             </div>
           </div>
         </div>
